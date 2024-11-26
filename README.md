@@ -1,10 +1,11 @@
-# RTL Testing a setTimeout
+# RTL Testing Fetches
 
 ## Add GIF of expected behavior here!!!
 
 ### Helpful Tips to Get You Started
 
 ##### Setup Commands
+
 ```
 git clone <repo>
 # install dependencies
@@ -16,6 +17,7 @@ npm run test
 ```
 
 ##### Syntax
+
 - `jest.spyOn(global, "fetch")` to mock `fetch` implementation
 - `await wait(() ={'>'} getByTestId("my-async-element"))` to wait until element is visible
 - `global.fetch.mockClear` to clear mock after test
@@ -26,16 +28,20 @@ npm run test
 - Before setting up your test suites, you should use `afterEach(cleanup)` (after imports) in order to unmount any React trees that were mounted with render
 
 ### Testing MultipleFetches
+
 Create five tests for the Counter component.
 
 - The first test should verify that component starts without any post.
+
   - Set a rendered `MultipleFetches` to a deconstructed `queryByTestId`.
   - Verify that the queried element id "fetch-post" does not have content and returns null.
 - The second test should handle a button click that displays a loading message.
+
   - Set a rendered `MultipleFetches` to a deconstructed `queryByTestId` and `getByText`.
   - Simulate a click event on the button with text "Fetch post and comments".
   - Verify that the node with id "fetch-loading-post" has content text of "Loading post...".
 - The third test should group all API tests together and clear each mock after each test.
+
   - Mock fetching an API implementation.
   - Mock single fetch call to have more control over multiple API requests.
   - If call is successful return and object with a key of title and a value of text "How to Become a Bad Developer".
@@ -53,6 +59,7 @@ Create five tests for the Counter component.
   - Verify that the first author's name is "Rafael".
   - Verify that the first author's name is "Andressa".
 - The fourth test should handle displaying comment if API fails.
+
   - Mock fetching an API implementation.
   - If call is successful return and object with a key of title and a value of text "How to Become a Bad Developer"
   - If call is unsuccessful return a 500 status.
@@ -66,6 +73,7 @@ Create five tests for the Counter component.
   - Verify that the node with id "fetch-error-comments" has content text of "Failed to fetch".
   - Verify that there is no present node with text "All fetched!".
 - The fifth test should handle displaying post error if API fails.
+
   - Mock fetching an API implementation.
   - If call is unsuccessful return a 500 status.
   - Set a rendered `MultipleFetches` to a deconstructed `getByTestId`, `getByText`, and `queryByText`.
@@ -77,16 +85,19 @@ Create five tests for the Counter component.
   - Verify that there is no present node with text "All fetched!".
 
   ### Testing Fetch
-  Create four tests for the Counter component.
 
+  Create four tests for the Counter component.
 - The first test should verify that the component starts without any joke.
+
   - Set a rendered `Fetch` to a deconstructed `queryByTextId`.
   - Verify that the queried element id "fetch-joke" does not have content and returns null.
 - The second test should handle a button click that displays a loading message.
+
   - Set a rendered `Fetch` to a deconstructed `queryByTestId` and `getByText`.
   - Simulate a click event on the button with text "Get a Chuck Norris joke".
   - Verify that the node with id "fetch-loading" has content text of "Loading...".
 - The third test should handle displaying a joke if API succeeds, upon button click.
+
   - Mock fetching an API implementation.
   - If call is successful return and object with a key-value "Chuck Norris counted to infinity. Twice.".
   - Set a rendered `Fetch` to a deconstructed `queryByTestId` and `getByText`.
@@ -97,6 +108,7 @@ Create five tests for the Counter component.
   - Verify the fetch API call url is "https://api.chucknorris.io/jokes/random".
   - Clear mock after test.
 - The fourth test should handle displaying an error if API fails, upon button click.
+
   - Mock fetching an API implementation.
   - If call is unsuccessful return a 500 status.
   - Set a rendered `Fetch` to a deconstructed `queryByTestId` and `getByText`.
